@@ -43,7 +43,9 @@ gem 'unicorn'
 gem 'bootstrap', '~> 4.1.0'
 
 gem "administrate"
-gem "wysiwyg-rails"
+gem "font-awesome-sass", '5.0.9'
+gem "wysiwyg-rails", '2.8.1'
+
 
 gem "carrierwave"
 gem "mini_magick"
