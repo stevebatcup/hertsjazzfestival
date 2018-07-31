@@ -19,7 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 gem 'nokogiri', '1.8.2'
 
@@ -52,9 +52,9 @@ gem 'figaro'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem "capistrano", "~> 3.10", require: false
-  gem "capistrano-rails", "~> 1.3", require: false
-  gem 'capistrano-rbenv', '~> 2.1'
+  gem "capistrano", "3.10", require: false
+  gem "capistrano-rails", "1.3", require: false
+  gem 'capistrano-rbenv', '2.1'
 end
 
 group :development do
