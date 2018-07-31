@@ -86,7 +86,7 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.12.2)
+    coffee-script-source (1.8.0)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     datetime_picker_rails (0.0.7)
@@ -250,6 +250,7 @@ DEPENDENCIES
   capistrano-rbenv (= 2.1)
   carrierwave
   coffee-rails (~> 4.2)
+  coffee-script-source (= 1.8.0)
   figaro
   jbuilder (~> 2.5)
   jquery-rails
