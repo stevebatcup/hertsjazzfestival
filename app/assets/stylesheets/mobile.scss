@@ -1,0 +1,105 @@
+body.mobile {
+	.mobile_hide {
+		display: none;
+	}
+
+	.mobile_show {
+		display: block;
+	}
+
+	form#newsletter-form,
+	form#season-form {
+		min-height: 67vh;
+	}
+
+	header {
+		padding: 10px 0;
+
+		#menu_btn {
+			margin-top: 13px;
+		}
+
+		nav {
+			padding-top: 1em;
+
+			.bd-toc-link {
+				display: block;
+				padding: .35rem 0;
+				font-weight: 500;
+				color: lighten(#c8ab37, 10%);
+			}
+		}
+	}
+
+	#home {
+		img.mobile_show {
+			display: block;
+			width: 100%;
+			margin-bottom: 15px;
+		}
+
+		.marketing {
+			.item {
+				height: initial !important;
+				padding-bottom: 46px;
+				margin-bottom: 15px;
+			}
+		}
+	}
+
+	.container#films,
+	.container#festivals{
+		.gig {
+			height: initial;
+
+			h5 {
+				margin-bottom: 0;
+			}
+
+			div.buttons {
+				position: static !important;
+				width: initial !important;
+				margin-bottom: 15px;
+			}
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	.container#gig {
+		#back_to_season {
+			display: none;
+		}
+
+		#photo_and_desc {
+			padding-bottom: 20px;
+		}
+	}
+
+	footer {
+		background: #24292d;
+		padding: 17px 15px 15px;
+		margin-top: 15px;
+		color:
+
+		#info_col {
+			padding-right: 0;
+		}
+
+		#social_col {
+			text-align: right;
+			padding: 5px 20px 0 0;
+
+			.nav-link {
+				width: 37px;
+				display: inline-block;
+
+				&#twitter  {
+					color: #6999d0;
+				}
+			}
+		}
+	}
+}

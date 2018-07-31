@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Herts Jazz Festival</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="bg-dark text-white">
+  	<div class="container">
+
+  		<header class="py-3" style="line-height: 1; border-bottom: 1px solid #e5e5e5;">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-4 pt-1">
+            <p class="" style="margin-bottom: 6px;"><small><b>Box office:</b> 01462 681088</small></p>
+            <p class="" style="margin-bottom: 0;"><small><b>Email us:</b> <a href="mailto:info@hertsjazz. co.uk">info@hertsjazz.co.uk</a></small></p>
+          </div>
+          <div class="col-4 text-center">
+            <h1>
+              <a class="blog-header-logo text-dark" href="<%= root_path %>" title="Herts Jazz Festival">
+                <img src="<%= asset_url('logo-grey-bg.png'); %>" alt="Herts Jazz Festival" style="width: 170px;" />
+              </a>
+            </h1>
+          </div>
+          <div class="col-4 d-flex justify-content-end align-items-center">
+			      <a class="nav-link p-2" href="https://www.facebook.com/groups/HertsJazz/" target="_blank" rel="noopener" aria-label="Facebook" title="View our Facebook page">
+			      	<svg class="navbar-nav-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							 viewBox="0 0 266.893 266.895" enable-background="new 0 0 266.893 266.895"
+							 xml:space="preserve">
+						<path id="Blue_1_" fill="#3C5A99" d="M248.082,262.307c7.854,0,14.223-6.369,14.223-14.225V18.812
+							c0-7.857-6.368-14.224-14.223-14.224H18.812c-7.857,0-14.224,6.367-14.224,14.224v229.27c0,7.855,6.366,14.225,14.224,14.225
+							H248.082z"/>
+						<path id="f" fill="#FFFFFF" d="M182.409,262.307v-99.803h33.499l5.016-38.895h-38.515V98.777c0-11.261,3.127-18.935,19.275-18.935
+							l20.596-0.009V45.045c-3.562-0.474-15.788-1.533-30.012-1.533c-29.695,0-50.025,18.126-50.025,51.413v28.684h-33.585v38.895h33.585
+							v99.803H182.409z"/>
+						</svg>
+						</a>
+			      <a id="twitter" class="nav-link p-2" href="https://twitter.com/HertsJazz" target="_blank" rel="noopener" aria-label="Twitter" title="View our Twitter feed"><svg class="navbar-nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 416.32" focusable="false"><title>View our Twitter feed</title><path d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92" fill="currentColor"></path></svg>
+						</a>
+          </div>
+        </div>
+      </header>
+
+      <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+          <% if is_tablet? %>
+            <a class="p-2 " href="<%= root_path %>">Home</a>
+          <% else %>
+            <a class="p-2 " href="<%= root_path %>">Herts Jazz Festival <%= current_festival.year %></a>
+          <% end %>
+          <a class="p-2 " href="<%= films_path %>">Film Festival</a>
+          <a class="p-2 " href="<%= current_venue_path %>">Broadway Theatre</a>
+          <a class="p-2 " href="<%= club_path %>">Herts Jazz Club</a>
+          <% if is_tablet? %>
+            <a class="p-2 " href="<%= festivals_path %>">Previous Festivals</a>
+          <% else %>
+            <div class="dropdown">
+              <a href='#' class="p-2 " id="dropdown_archive" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Previous Festivals <span class="caret"></span></a>
+              <%= render partial: "layouts/festival_list", locals: { list: festival_list } %>
+            </div>
+          <% end %>
+        </nav>
+      </div>
+    </div>
+
+    <% if is_home? %>
+    <div id="home_carousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#home_carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#home_carousel" data-slide-to="1"></li>
+        <li data-target="#home_carousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <%= image_tag "home/slide-1.jpg", alt: "", class: "first-slide" %>
+          <div class="container">
+            <div class="carousel-caption text-right">
+              <h1>Herts Jazz</h1>
+              <p>Hi. Welcome to Herts Jazz's website.<br />We've been presenting jazz since 1969 and continue<br /> to maintain only the highest standard of performers each week, <br />both national and international.</p>
+              <p><a class="btn btn-lg btn-primary" href="/current-season" role="button">Take a look at the current season</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag "home/slide-2.jpg", alt: "", class: "second-slide" %>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag "home/slide-3.jpg", alt: "", class: "third-slide" %>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#home_carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#home_carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <% end %>
+
+    <main role="main">
+      <%= yield %>
+    </main>
+
+    <footer class="my-5 pt-5  text-center text-small">
+      <p class="mb-1">&copy; <%= Date.today.strftime("%Y") %> Herts Jazz</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="<%= root_path %>">2018 Jazz Festival</a></li>
+        <li class="list-inline-item"><a href="<%= films_path %>">Film Festival</a></li>
+        <li class="list-inline-item"><a href="<%= club_path %>">Herts Jazz Club</a></li>
+      </ul>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<div class="container" id="festivals">
+	<h2 class="main_heading">Herts Jazz Festival <%= @festival.year %></h2>
+	<% @festival.days.each do |day| %>
+		<% if day.gig_list.any? %>
+			<h4><%= day.date.strftime("%A %B %e") %></h4>
+			<div class="row">
+				<% day.gigs.each do |gig| %>
+					<div class="col-12 col-lg-3 col-md-4 gig">
+						<%= link_to(image_tag(gig.image.url(:small)), gig_path(gig)) if gig.image.present? %>
+						<h5><%= link_to "#{gig.act} <br /> #{gig.starts.strftime("%l:%M -")}#{gig.ends.strftime("%l:%M%P")}".html_safe, gig_path(gig) %></h5>
+						<%= simple_format gig.description.truncate_words(45) %>
+						<div class='buttons'>
+							<a href="<%= gig_path(gig) %>" class='btn btn-primary btn-block'>More details ></a>
+							<a href='<%= gig.booking_url %>' class='btn btn-success btn-block' target="_blank">Book now</a>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+	<% end %>
+
+	<% if @festival.gallery_url.length > 0 && !@festival.is_current %>
+		<%= link_to "Click here to see Melody McLaren's photos of the #{@festival.year} festival", @festival.gallery_url, target: :blank %>
+	<% end %>
+
+	<% if @festival.is_current %>
+		<table id="prices" class="table">
+			<tr>
+				<th>Tickets</th>
+			</tr>
+			<tr>
+				<td><%= gig_price(@gig.standard_price) %> regular</td>
+			</tr>
+			<tr>
+				<td><%= gig_price(@gig.members_price) %> members</td>
+			</tr>
+			<tr>
+				<td><%= gig_price(@gig.students_price) %> students</td>
+			</tr>
+		</table>
+	<% end %>
+</div>

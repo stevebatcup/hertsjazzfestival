@@ -1,0 +1,61 @@
+@import "_variables";
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+@import "nav";
+
+.mobile_hide {
+	display: block;
+}
+
+.mobile_show {
+	display: none;
+}
+
+a, a:link, a:hover, a:visited, a:active {
+	color: $link;
+}
+
+h1, h2, h3, h4, h5, .btn {
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+h2.main_heading {
+	margin-bottom: 20px;
+}
+
+.btn {
+	color: #fff !important;
+}
+
+main {
+	margin-top: 30px;
+}
+
+.container#club {
+	img {
+		margin: 0;
+		width: 100%;
+	}
+
+	figcaption {
+		margin-bottom: 20px;
+		color: #ccc;
+
+		a {
+			text-decoration: underline;
+		}
+	}
+}
+
+form#festival-form {
+	width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+
+  .btn {
+  	margin-top: 6px;
+  }
+}
+
+@import "gigs_festivals";

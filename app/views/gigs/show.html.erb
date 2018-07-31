@@ -1,0 +1,47 @@
+<div class="container" id="gig">
+	<h2><%= @gig.act %></h2>
+	<div class="row">
+		<div class="col-md-7 col-sm-12" id="photo_and_desc">
+			<%= image_tag(@gig.image.url(:large)) if @gig.image.present? %>
+			<%= simple_format @gig.description %>
+			<h5>
+				<% @gig.website.split(",").each do |website| %>
+					<%= link_to website.strip, "http://#{website.strip}", target: :blank %><br />
+				<% end %>
+			</h5>
+			<%= back_link(@gig) %>
+		</div>
+
+		<div class="col-md-5 col-sm-12">
+			<% if @gig.is_film? %>
+				<h2 class="main_heading" id="films_heading">Herts Jazz <%= current_festival.year %> Film Festival</h2>
+			<% end %>
+			<h4 class="">
+					<%= @gig.day.date.strftime("%A %B %e") %>, <%= @gig.starts.strftime("%l:%M%P") %>
+			</h4>
+			<ul id="players">
+				<% @gig.performances.group_by(&:musician_id).each do |key, item| %>
+					<% instruments = item.map(&:instrument).map(&:name).join(", ") %>
+					<li>> <%= Musician.find(key).full_name %> - <%= instruments %></li>
+				<% end %>
+			</ul>
+
+			<table id="prices" class="table">
+				<tr>
+					<th>Tickets</th>
+				</tr>
+				<tr>
+					<td><%= gig_price(@gig.standard_price) %> regular</td>
+				</tr>
+				<tr>
+					<td><%= gig_price(@gig.members_price) %> members</td>
+				</tr>
+				<tr>
+					<td><%= gig_price(@gig.students_price) %> students</td>
+				</tr>
+			</table>
+
+			<a href='<%= @gig.booking_url %>' class='btn btn-success btn-block' target="_blank">Book now</a>
+		</div>
+	</div>
+</div>

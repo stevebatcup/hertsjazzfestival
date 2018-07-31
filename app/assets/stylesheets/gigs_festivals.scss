@@ -1,0 +1,73 @@
+.container#festivals {
+	.gig {
+		height: 600px;
+		position: relative;
+		margin-bottom: 20px;
+
+		h5 {
+			background: #202223;
+			padding: 5px 0;
+			font-size: 1.1em;
+			text-align: center;
+		}
+
+		h3.double_bill {
+			font-size: 1.1em;
+			a {
+				color: #777;
+			}
+		}
+
+		h2 {
+			font-size: 1.4em;
+			line-height: 1.4em;
+			max-height: 2.8em;
+			overflow: hidden;
+			margin: 5px 0 1px;
+		}
+
+		img {
+			width: 100%;
+		}
+
+		div.buttons {
+			position: absolute;
+			bottom: 25px;
+			left: 5%;
+			width: 90%;
+		}
+	}
+}
+
+.container#gig {
+	#back_to_festival {
+		margin-top: 40px;
+		display: block;
+	}
+
+	img {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	ul#players {
+		padding: 5px 0 0 0;
+
+		li {
+			background: desaturate($blue, 35%);
+			color: #fff;
+			list-style: none;
+			padding: 4px 8px;
+			margin-bottom: 5px;
+		}
+	}
+	#films_heading {
+		background: asset_url('film-festival-banner.jpg') no-repeat left top;
+    background-size: 100%;
+    text-indent: -9999px;
+    display: block;
+    width: 330px;
+    height: 150px;
+    margin: 20px auto;
+	}
+}
