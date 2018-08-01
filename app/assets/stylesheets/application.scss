@@ -58,4 +58,29 @@ form#festival-form {
   }
 }
 
+ul {
+	li.sponsor {
+		&#bbcradio3 {
+			width: 120px;
+		}
+
+		&#artscouncil {
+			width: 235px;
+		}
+
+		&#cambridge {
+			width: 138px;
+		}
+
+		a {
+			display: block;
+			width: 100%;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+}
+
 @import "gigs_festivals";
