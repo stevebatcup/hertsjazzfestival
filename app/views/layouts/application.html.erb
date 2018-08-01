@@ -103,7 +103,11 @@
     <% end %>
 
     <main role="main">
-      <%= yield %>
+      <div class="row">
+        <div class="col-0 col-xl-1">&nbsp;</div>
+        <div class="col-12 col-xl-10"><%= yield %></div>
+        <div class="col-0 col-xl-1">&nbsp;</div>
+      </div>
     </main>
 
     <footer class="my-5 pt-5  text-center text-small">

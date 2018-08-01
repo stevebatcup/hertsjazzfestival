@@ -31,9 +31,12 @@ nav {
 	.dropdown {
 		top: 8px;
 
-		// a {
-		// 	color: $nav !important;
-		// }
+		a {
+			&.dropdown-item:hover {
+				background-color: #343a40;
+				color: darken(white, 5%);
+			}
+		}
 	}
 
 	.dropdown-submenu {
@@ -82,5 +85,20 @@ nav {
 	    -webkit-border-radius: 6px 0 6px 6px;
 	    -moz-border-radius: 6px 0 6px 6px;
 	    border-radius: 6px 0 6px 6px;
+	}
+}
+
+ul.nav-pills {
+	margin-bottom: 42px;
+
+	li.nav-item {
+		font-size: 1.25em;
+
+		a.nav-link {
+			color: #fff;
+			&.active, .show > .nav-link {
+				background-color: #1f1f1f;
+			}
+		}
 	}
 }

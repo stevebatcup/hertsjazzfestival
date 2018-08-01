@@ -1,77 +1,101 @@
 <div class="container" id="festivals">
-	<h2 class="main_heading">Herts Jazz Festival <%= @festival.year %> line-up</h2>
-	<% @festival.days.each do |day| %>
-		<% if day.gig_list.any? %>
-			<h4><%= day.date.strftime("%A %B %e") %></h4>
-			<div class="row">
-				<% day.gigs.each do |gig| %>
-					<div class="col-12 col-lg-4 col-md-4 gig">
-						<%= link_to(image_tag(gig.image.url(:small)), gig_path(gig)) if gig.image.present? %>
-						<h5><%= link_to "#{gig.act} <br /> #{gig.starts.strftime("%l:%M -")}#{gig.ends.strftime("%l:%M%P")}".html_safe, gig_path(gig) %></h5>
-						<%= simple_format gig.description.truncate_words(45) %>
-						<div class='buttons'>
-							<a href="<%= gig_path(gig) %>" class='btn btn-primary btn-block'>More details ></a>
-							<a href='<%= gig.booking_url %>' class='btn btn-success btn-block' target="_blank">Book now</a>
-						</div>
-					</div>
-				<% end %>
-				<div class="col-12 col-lg-8 col-md-8">
-					<h5>Day tickets for <%= day.date.strftime("%A") %></h5>
-					<table class="day_table table">
-						<tr>
-							<th>&nbsp;</th>
-							<th>Standard</th>
-							<th>Members</th>
-							<th>Students</th>
-						</tr>
-						<tr>
-							<td>Whole day<sup>*</sup></td>
-							<td><%= gig_price(day.day_standard_price) %></td>
-							<td><%= gig_price(day.day_members_price) %></td>
-							<td><%= gig_price(day.day_students_price) %></td>
-						</tr>
-						<tr>
-							<td>Early-bird<sup>**</sup></td>
-							<td><%= gig_price(day.earlybird_standard_price) %></td>
-							<td><%= gig_price(day.earlybird_members_price) %></td>
-							<td><%= gig_price(day.earlybird_students_price) %></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		<% end %>
-	<% end %>
-
-	<% if @festival.gallery_url.length > 0 && !@festival.is_current %>
-		<%= link_to "Click here to see Melody McLaren's photos of the #{@festival.year} festival", @festival.gallery_url, target: :blank %>
-	<% end %>
 
 	<% if @festival.is_current %>
-		<h2 class="main_heading">Whole weekend tickets</h2>
-		<table class="table">
-			<tr>
-				<th>&nbsp;</th>
-				<th>Standard</th>
-				<th>Members</th>
-				<th>Students</th>
-			</tr>
-			<tr>
-				<td>Weekend<sup>*</sup></td>
-				<td><%= gig_price(@festival.weekend_standard_price) %></td>
-				<td><%= gig_price(@festival.weekend_members_price) %></td>
-				<td><%= gig_price(@festival.weekend_students_price) %></td>
-			</tr>
-			<tr>
-				<td>Early-bird<sup>**</sup></td>
-				<td><%= gig_price(@festival.earlybird_standard_price) %></td>
-				<td><%= gig_price(@festival.earlybird_members_price) %></td>
-				<td><%= gig_price(@festival.earlybird_students_price) %></td>
-			</tr>
-			<caption>
-				* Weekend and Day tickets do not include admission to the Herts Jazz Film Festival<br />
-				** Early-bird tickets available until midnight 31 July<br />
-				Gig tickets go on sale 1 August
-			</caption>
-		</table>
+		<ul class="nav nav-pills nav-justified">
+		  <li class="nav-item">
+		    <a class="nav-link active" href="#lineup" data-toggle="tab" role="tab">Schedule</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#tickets" data-toggle="tab" role="tab">Tickets</a>
+		  </li>
+		</ul>
+	<% else %>
+		<h2 class="main_heading mb-5"><%= @festival.year %> Herts Jazz festival</h2>
+	<% end %>
+
+	<div class="tab-content" id="myTabContent">
+	  <div class="tab-pane fade show active" id="lineup" role="tabpanel" aria-labelledby="lineup-tab">
+			<% @festival.days.each do |day| %>
+				<% if day.gig_list.any? %>
+					<h4><%= day.date.strftime("%A %B %e") %></h4>
+					<div class="row">
+						<% day.gigs.each do |gig| %>
+							<div class="col-12 col-lg-3 col-md-4 gig">
+								<%= link_to(image_tag(gig.image.url(:small)), gig_path(gig)) if gig.image.present? %>
+								<h5><%= link_to "#{gig.act} <br /> #{gig.starts.strftime("%l:%M -")}#{gig.ends.strftime("%l:%M%P")}".html_safe, gig_path(gig) %></h5>
+								<%= simple_format gig.description.truncate_words(45) %>
+								<div class='buttons'>
+									<a href="<%= gig_path(gig) %>" class='btn btn-primary btn-block'>More details ></a>
+									<a href='<%= gig.booking_url %>' class='btn btn-success btn-block' target="_blank">Book now</a>
+								</div>
+							</div>
+						<% end %>
+					</div>
+				<% end %>
+			<% end %>
+
+			<% if @festival.gallery_url.length > 0 && !@festival.is_current %>
+				<%= link_to "Click here to see Melody McLaren's photos of the #{@festival.year} festival", @festival.gallery_url, target: :blank %>
+			<% end %>
+		</div>
+
+
+	<% if @festival.is_current %>
+		<div class="tab-pane fade show active" id="tickets" role="tabpanel" aria-labelledby="tickets-tab">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">Type</th>
+						<th scope="col">Standard</th>
+						<th scope="col">Members</th>
+						<th scope="col">Students</th>
+						<th scope="col">&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">Weekend<sup>*</sup></th>
+						<td><%= gig_price(@festival.weekend_standard_price) %></td>
+						<td><%= gig_price(@festival.weekend_members_price) %></td>
+						<td><%= gig_price(@festival.weekend_students_price) %></td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<th scope="row">Early-bird<sup>**</sup></th>
+						<td><%= gig_price(@festival.earlybird_standard_price) %></td>
+						<td><%= gig_price(@festival.earlybird_members_price) %></td>
+						<td><%= gig_price(@festival.earlybird_students_price) %></td>
+						<td><%= link_to "Book now", @festival.booking_url, target: :blank %></td>
+					</tr>
+					<% @festival.days.each do |day| %>
+						<% unless day.booking_url.nil? %>
+							<% day_name = day.date.strftime("%A").capitalize %>
+							<tr>
+								<th scope="row"><%= day_name %><sup>*</sup></th>
+								<td><%= gig_price(day.day_standard_price) %></td>
+								<td><%= gig_price(day.day_members_price) %></td>
+								<td><%= gig_price(day.day_students_price) %></td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<th scope="row"><%= day_name %> early-bird<sup>**</sup></th>
+								<td><%= gig_price(day.earlybird_standard_price) %></td>
+								<td><%= gig_price(day.earlybird_members_price) %></td>
+								<td><%= gig_price(day.earlybird_students_price) %></td>
+								<td><%= link_to "Book now", day.booking_url, target: :blank %></td>
+							</tr>
+						<% end %>
+					<% end %>
+					<tr>
+						<th scope="row">Individual gigs</th>
+						<td colspan="4">Gig tickets go on sale 1st August. <a href="/">View the schedule to see individual prices</a></td>
+					</tr>
+					<caption>
+						* Weekend and Day tickets do not include admission to the Herts Jazz Film Festival<br />
+						** Early-bird tickets available until midnight 31 July
+					</caption>
+				</tbody>
+			</table>
+		</div>
 	<% end %>
 </div>

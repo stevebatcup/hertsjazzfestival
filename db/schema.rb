@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180731111835) do
+ActiveRecord::Schema.define(version: 20180801145849) do
 
   create_table "days", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.date    "date"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20180731111835) do
     t.decimal "earlybird_members_price",  precision: 8, scale: 2
     t.decimal "earlybird_students_price", precision: 8, scale: 2
     t.integer "sort"
+    t.string  "booking_url"
   end
 
   create_table "festivals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

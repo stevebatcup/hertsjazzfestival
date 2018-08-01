@@ -19,6 +19,7 @@ class DayDashboard < Administrate::BaseDashboard
     earlybird_standard_price: Field::String.with_options(searchable: false),
     earlybird_members_price: Field::String.with_options(searchable: false),
     earlybird_students_price: Field::String.with_options(searchable: false),
+    booking_url: Field::String,
     sort: Field::Number,
   }.freeze
 
@@ -45,7 +46,8 @@ class DayDashboard < Administrate::BaseDashboard
     :day_students_price,
     :earlybird_standard_price,
     :earlybird_members_price,
-    :earlybird_students_price
+    :earlybird_students_price,
+    :booking_url
   ].freeze
 
   # Overwrite this method to customize how days are displayed
