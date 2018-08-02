@@ -15,14 +15,14 @@
 
 	<div class="tab-content" id="myTabContent">
 	  <div class="tab-pane fade show active" id="lineup" role="tabpanel" aria-labelledby="lineup-tab">
+			<div class="row">
 			<% @festival.days.each do |day| %>
 				<% if day.gig_list.any? %>
-					<h4><%= day.date.strftime("%A %B %e") %></h4>
-					<div class="row">
-						<% day.gigs.each do |gig| %>
+						<% day.gig_list.each do |gig| %>
 							<div class="col-12 col-lg-3 col-md-4 gig">
 								<%= link_to(image_tag(gig.image.url(:small)), gig_path(gig)) if gig.image.present? %>
-								<h5><%= link_to "#{gig.act} <br /> #{gig.starts.strftime("%l:%M -")}#{gig.ends.strftime("%l:%M%P")}".html_safe, gig_path(gig) %></h5>
+								<h5><%= link_to gig.act, gig_path(gig) %></h5>
+								<h6><%= day.date.strftime("%A %B %e") %> <br /> <%= "#{gig.starts.strftime("%l:%M -")}#{gig.ends.strftime("%l:%M%P")}".html_safe %></h6>
 								<%= simple_format gig.description.truncate_words(45) %>
 								<div class='buttons'>
 									<a href="<%= gig_path(gig) %>" class='btn btn-primary btn-block'>More details ></a>
@@ -30,9 +30,9 @@
 								</div>
 							</div>
 						<% end %>
-					</div>
 				<% end %>
 			<% end %>
+			</div>
 
 			<% if @festival.gallery_url.length > 0 && !@festival.is_current %>
 				<%= link_to "Click here to see Melody McLaren's photos of the #{@festival.year} festival", @festival.gallery_url, target: :blank %>

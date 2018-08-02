@@ -12,7 +12,7 @@ class Day < ApplicationRecord
 	end
 
 	def music_gigs
-		@music_gigs ||= self.gigs.where(is_film: false)
+		self.gigs.where(is_film: false)
 	end
 
 	def film_gigs
