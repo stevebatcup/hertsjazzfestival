@@ -12,11 +12,11 @@ class Day < ApplicationRecord
 	end
 
 	def music_gigs
-		self.gigs.where(is_film: false)
+		@music_gigs ||= self.gigs.where(is_film: false).order(starts: :asc)
 	end
 
 	def film_gigs
-		@film_gigs ||= self.gigs.where(is_film: true)
+		@film_gigs ||= self.gigs.where(is_film: true).order(starts: :asc)
 	end
 
 	def date_as_day_name

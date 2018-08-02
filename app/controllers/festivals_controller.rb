@@ -13,7 +13,7 @@ class FestivalsController < ApplicationController
 			@festival = Festival.where(is_current: true).first
 		else
 			@festival = Festival.find(params[:id])
-			redirect_to current_festival_path if @festival.is_current
+			redirect_to root_path if @festival.is_current
 			@is_current = false
 		end
 	end

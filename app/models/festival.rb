@@ -3,6 +3,10 @@ class Festival < ApplicationRecord
 	belongs_to	:venue
 	before_save	:build_dates
 
+	def reverse_days
+		self.days.reverse
+	end
+
 	def build_dates
 		self.year = self.starts.strftime("%Y")
 		day_count = ((self.ends - self.starts).to_i / 86400)

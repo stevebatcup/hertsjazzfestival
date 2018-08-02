@@ -16,7 +16,7 @@
 	<div class="tab-content" id="myTabContent">
 	  <div class="tab-pane fade show active" id="lineup" role="tabpanel" aria-labelledby="lineup-tab">
 			<div class="row">
-			<% @festival.days.each do |day| %>
+			<% @festival.reverse_days.each do |day| %>
 				<% if day.gig_list.any? %>
 						<% day.gig_list.each do |gig| %>
 							<div class="col-12 col-lg-3 col-md-4 gig">
