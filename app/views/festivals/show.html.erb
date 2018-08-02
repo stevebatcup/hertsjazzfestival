@@ -58,15 +58,17 @@
 						<td><%= gig_price(@festival.weekend_standard_price) %></td>
 						<td><%= gig_price(@festival.weekend_members_price) %></td>
 						<td><%= gig_price(@festival.weekend_students_price) %></td>
-						<td>&nbsp;</td>
-					</tr>
-					<tr>
-						<th scope="row">Early-bird<sup>**</sup></th>
-						<td><%= gig_price(@festival.earlybird_standard_price) %></td>
-						<td><%= gig_price(@festival.earlybird_members_price) %></td>
-						<td><%= gig_price(@festival.earlybird_students_price) %></td>
 						<td><%= link_to "Book now", @festival.booking_url, target: :blank %></td>
 					</tr>
+					<% unless @festival.earlybird_standard_price.nil? %>
+						<tr>
+							<th scope="row">Early-bird<sup>**</sup></th>
+							<td><%= gig_price(@festival.earlybird_standard_price) %></td>
+							<td><%= gig_price(@festival.earlybird_members_price) %></td>
+							<td><%= gig_price(@festival.earlybird_students_price) %></td>
+							<td><%= link_to "Book now", @festival.booking_url, target: :blank %></td>
+						</tr>
+					<% end %>
 					<% @festival.days.each do |day| %>
 						<% unless day.booking_url.nil? %>
 							<% day_name = day.date.strftime("%A").capitalize %>
@@ -75,15 +77,17 @@
 								<td><%= gig_price(day.day_standard_price) %></td>
 								<td><%= gig_price(day.day_members_price) %></td>
 								<td><%= gig_price(day.day_students_price) %></td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<th scope="row"><%= day_name %> early-bird<sup>**</sup></th>
-								<td><%= gig_price(day.earlybird_standard_price) %></td>
-								<td><%= gig_price(day.earlybird_members_price) %></td>
-								<td><%= gig_price(day.earlybird_students_price) %></td>
 								<td><%= link_to "Book now", day.booking_url, target: :blank %></td>
 							</tr>
+							<% unless day.earlybird_standard_price.nil? %>
+								<tr>
+									<th scope="row"><%= day_name %> early-bird<sup>**</sup></th>
+									<td><%= gig_price(day.earlybird_standard_price) %></td>
+									<td><%= gig_price(day.earlybird_members_price) %></td>
+									<td><%= gig_price(day.earlybird_students_price) %></td>
+									<td><%= link_to "Book now", day.booking_url, target: :blank %></td>
+								</tr>
+							<% end %>
 						<% end %>
 					<% end %>
 					<tr>
@@ -91,8 +95,10 @@
 						<td colspan="4">Gig tickets go on sale 1st August. <a href="/">View the schedule to see individual prices</a></td>
 					</tr>
 					<caption>
-						* Weekend and Day tickets do not include admission to the Herts Jazz Film Festival<br />
-						** Early-bird tickets available until midnight 31 July
+						* Weekend and Day tickets do not include admission to the Herts Jazz Film Festival
+						<% unless @festival.earlybird_standard_price.nil? %>
+							<br />** Early-bird tickets available until midnight 31 July
+						<% end %>
 					</caption>
 				</tbody>
 			</table>
