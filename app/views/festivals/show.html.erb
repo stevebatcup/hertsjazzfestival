@@ -60,7 +60,13 @@
 						<td><%= gig_price(@festival.weekend_standard_price) %></td>
 						<td><%= gig_price(@festival.weekend_members_price) %></td>
 						<td><%= gig_price(@festival.weekend_students_price) %></td>
-						<td><%= link_to "Book now", @festival.booking_url, target: :blank %></td>
+						<td>
+							<% if @festival.is_in_early_bird_period? %>
+								&nbsp;
+							<% else %>
+								<%= link_to "Book now", @festival.booking_url, target: :blank %>
+							<% end %>
+						</td>
 					</tr>
 					<% if @festival.is_in_early_bird_period? %>
 						<tr>
@@ -79,7 +85,13 @@
 								<td><%= gig_price(day.day_standard_price) %></td>
 								<td><%= gig_price(day.day_members_price) %></td>
 								<td><%= gig_price(day.day_students_price) %></td>
-								<td><%= link_to "Book now", day.booking_url, target: :blank %></td>
+								<td>
+									<% if @festival.is_in_early_bird_period? %>
+										&nbsp;
+									<% else %>
+										<%= link_to "Book now", day.booking_url, target: :blank %>
+									<% end %>
+								</td>
 							</tr>
 							<% if @festival.is_in_early_bird_period? %>
 								<tr>
