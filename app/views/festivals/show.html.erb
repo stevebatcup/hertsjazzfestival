@@ -26,7 +26,9 @@
 								<%= simple_format gig.description.truncate_words(45) %>
 								<div class='buttons'>
 									<a href="<%= gig_path(gig) %>" class='btn btn-primary btn-block'>More details ></a>
-									<a href='<%= gig.booking_url %>' class='btn btn-success btn-block' target="_blank">Book now</a>
+									<% unless gig.has_passed? %>
+										<a href='<%= gig.booking_url %>' class='btn btn-success btn-block' target="_blank">Book now</a>
+									<% end %>
 								</div>
 							</div>
 						<% end %>
@@ -60,7 +62,7 @@
 						<td><%= gig_price(@festival.weekend_students_price) %></td>
 						<td><%= link_to "Book now", @festival.booking_url, target: :blank %></td>
 					</tr>
-					<% unless @festival.earlybird_standard_price.nil? %>
+					<% if @festival.is_in_early_bird_period? %>
 						<tr>
 							<th scope="row">Early-bird<sup>**</sup></th>
 							<td><%= gig_price(@festival.earlybird_standard_price) %></td>
@@ -79,7 +81,7 @@
 								<td><%= gig_price(day.day_students_price) %></td>
 								<td><%= link_to "Book now", day.booking_url, target: :blank %></td>
 							</tr>
-							<% unless day.earlybird_standard_price.nil? %>
+							<% if @festival.is_in_early_bird_period? %>
 								<tr>
 									<th scope="row"><%= day_name %> early-bird<sup>**</sup></th>
 									<td><%= gig_price(day.earlybird_standard_price) %></td>
@@ -92,11 +94,15 @@
 					<% end %>
 					<tr>
 						<th scope="row">Individual gigs</th>
-						<td colspan="4">Gig tickets go on sale 1st August. <a href="/">View the schedule to see individual prices</a></td>
+						<td colspan="4">
+							<% if @festival.is_in_early_bird_period? %>
+								Gig tickets go on sale <%= @festival.early_bird_cutoff_date.strftime("%B %d") %>.
+							<% end %>
+							<a href="/">View the schedule to see individual prices</a></td>
 					</tr>
 					<caption>
 						* Weekend and Day tickets do not include admission to the Herts Jazz Film Festival
-						<% unless @festival.earlybird_standard_price.nil? %>
+						<% if @festival.is_in_early_bird_period? %>
 							<br />** Early-bird tickets available until midnight 31 July
 						<% end %>
 					</caption>

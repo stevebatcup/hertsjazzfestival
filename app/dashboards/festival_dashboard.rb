@@ -24,6 +24,7 @@ class FestivalDashboard < Administrate::BaseDashboard
     booking_url: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    early_bird_cutoff_date: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -67,6 +68,7 @@ class FestivalDashboard < Administrate::BaseDashboard
     :weekend_standard_price,
     :weekend_members_price,
     :weekend_students_price,
+    :early_bird_cutoff_date,
     :earlybird_standard_price,
     :earlybird_members_price,
     :earlybird_students_price,

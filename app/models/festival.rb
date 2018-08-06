@@ -28,4 +28,8 @@ class Festival < ApplicationRecord
 		film_list
 		end
 	end
+
+	def is_in_early_bird_period?
+		Date.today <= self.early_bird_cutoff_date
+	end
 end

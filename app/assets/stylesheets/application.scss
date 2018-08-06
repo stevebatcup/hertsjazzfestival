@@ -11,6 +11,11 @@
 	display: none;
 }
 
+.blog-header-logo {
+	display: block;
+  margin-top: 8px;
+}
+
 a, a:link, a:hover, a:visited, a:active {
 	color: $link;
 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180801145849) do
+ActiveRecord::Schema.define(version: 20180806110605) do
 
   create_table "days", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.date    "date"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20180801145849) do
     t.datetime "updated_at",                                                       null: false
     t.datetime "starts"
     t.datetime "ends"
+    t.date     "early_bird_cutoff_date"
   end
 
   create_table "gigs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
