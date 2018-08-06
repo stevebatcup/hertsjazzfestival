@@ -32,4 +32,8 @@ class Festival < ApplicationRecord
 	def is_in_early_bird_period?
 		Date.today <= self.early_bird_cutoff_date
 	end
+
+	def early_bird_cutoff_eve
+		self.early_bird_cutoff_date - 1.day
+	end
 end

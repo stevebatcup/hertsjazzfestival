@@ -96,14 +96,14 @@
 						<th scope="row">Individual gigs</th>
 						<td colspan="4">
 							<% if @festival.is_in_early_bird_period? %>
-								Gig tickets go on sale <%= @festival.early_bird_cutoff_date.strftime("%B %d") %>.
+								Gig tickets go on sale <%= @festival.early_bird_cutoff_date.strftime("%B %e") %>.
 							<% end %>
 							<a href="/">View the schedule to see individual prices</a></td>
 					</tr>
 					<caption>
 						* Weekend and Day tickets do not include admission to the Herts Jazz Film Festival
 						<% if @festival.is_in_early_bird_period? %>
-							<br />** Early-bird tickets available until midnight 31 July
+							<br />** Early-bird tickets available until midnight <%= @festival.early_bird_cutoff_eve.strftime("%B %e") %>
 						<% end %>
 					</caption>
 				</tbody>
