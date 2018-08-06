@@ -26,7 +26,7 @@
 								<%= simple_format gig.description.truncate_words(45) %>
 								<div class='buttons'>
 									<a href="<%= gig_path(gig) %>" class='btn btn-primary btn-block'>More details ></a>
-									<% unless gig.has_passed? %>
+									<% if gig.is_bookable? %>
 										<a href='<%= gig.booking_url %>' class='btn btn-success btn-block' target="_blank">Book now</a>
 									<% end %>
 								</div>

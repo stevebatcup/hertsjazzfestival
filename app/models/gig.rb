@@ -20,4 +20,8 @@ class Gig < ApplicationRecord
 	def has_passed?
 		self.day.date < Date.today
 	end
+
+	def is_bookable?
+		!self.day.festival.is_in_early_bird_period? && self.booking_url.present? && !self.has_passed?
+	end
 end

@@ -41,7 +41,7 @@
 				</tr>
 			</table>
 
-			<% unless @gig.has_passed? %>
+			<% if @gig.is_bookable? %>
 				<a href='<%= @gig.booking_url %>' class='btn btn-success btn-block' target="_blank">Book now</a>
 			<% end %>
 		</div>
