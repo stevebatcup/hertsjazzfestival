@@ -26,20 +26,22 @@
 				<% end %>
 			</ul>
 
-			<table id="prices" class="table">
-				<tr>
-					<th>Tickets</th>
-				</tr>
-				<tr>
-					<td><%= gig_price(@gig.standard_price) %> regular</td>
-				</tr>
-				<tr>
-					<td><%= gig_price(@gig.members_price) %> members</td>
-				</tr>
-				<tr>
-					<td><%= gig_price(@gig.students_price) %> students</td>
-				</tr>
-			</table>
+			<% if @gig.day.festival.is_current? %>
+				<table id="prices" class="table">
+					<tr>
+						<th>Tickets</th>
+					</tr>
+					<tr>
+						<td><%= gig_price(@gig.standard_price) %> regular</td>
+					</tr>
+					<tr>
+						<td><%= gig_price(@gig.members_price) %> members</td>
+					</tr>
+					<tr>
+						<td><%= gig_price(@gig.students_price) %> students</td>
+					</tr>
+				</table>
+			<% end %>
 
 			<% if @gig.is_bookable? %>
 				<a href='<%= @gig.booking_url %>' class='btn btn-success btn-block' target="_blank">Book now</a>
