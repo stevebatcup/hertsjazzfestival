@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180806110605) do
+ActiveRecord::Schema.define(version: 20180816105902) do
 
   create_table "days", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.date    "date"
@@ -29,19 +29,20 @@ ActiveRecord::Schema.define(version: 20180806110605) do
     t.string   "year"
     t.integer  "venue_id"
     t.string   "gallery_url"
-    t.boolean  "is_current",                                       default: false
-    t.decimal  "weekend_standard_price",   precision: 8, scale: 2
-    t.decimal  "weekend_members_price",    precision: 8, scale: 2
-    t.decimal  "weekend_students_price",   precision: 8, scale: 2
-    t.decimal  "earlybird_standard_price", precision: 8, scale: 2
-    t.decimal  "earlybird_members_price",  precision: 8, scale: 2
-    t.decimal  "earlybird_students_price", precision: 8, scale: 2
+    t.boolean  "is_current",                                                     default: false
+    t.decimal  "weekend_standard_price",                 precision: 8, scale: 2
+    t.decimal  "weekend_members_price",                  precision: 8, scale: 2
+    t.decimal  "weekend_students_price",                 precision: 8, scale: 2
+    t.decimal  "earlybird_standard_price",               precision: 8, scale: 2
+    t.decimal  "earlybird_members_price",                precision: 8, scale: 2
+    t.decimal  "earlybird_students_price",               precision: 8, scale: 2
     t.string   "booking_url"
-    t.datetime "created_at",                                                       null: false
-    t.datetime "updated_at",                                                       null: false
+    t.datetime "created_at",                                                                     null: false
+    t.datetime "updated_at",                                                                     null: false
     t.datetime "starts"
     t.datetime "ends"
     t.date     "early_bird_cutoff_date"
+    t.text     "meta_description",         limit: 65535
   end
 
   create_table "gigs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

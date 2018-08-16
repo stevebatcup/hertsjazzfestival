@@ -22,6 +22,7 @@ class FestivalDashboard < Administrate::BaseDashboard
     earlybird_members_price: Field::String.with_options(searchable: false),
     earlybird_students_price: Field::String.with_options(searchable: false),
     booking_url: Field::String,
+    meta_description: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     early_bird_cutoff_date: Field::DateTime
@@ -73,6 +74,7 @@ class FestivalDashboard < Administrate::BaseDashboard
     :earlybird_members_price,
     :earlybird_students_price,
     :booking_url,
+    :meta_description
   ].freeze
 
   # Overwrite this method to customize how festivals are displayed

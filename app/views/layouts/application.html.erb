@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Herts Jazz Festival</title>
+    <title>
+      <%= if content_for?(:page_title) then yield(:page_title) + ' | ' end %>
+      Herts Jazz Festival
+    </title>
+    <meta name='description'
+          content="<%= yield_meta_tag(:description, "Herts Jazz Festival - One of Britains finest jazz events") %>" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
 

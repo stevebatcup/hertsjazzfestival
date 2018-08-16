@@ -1,5 +1,12 @@
-<div class="container" id="festivals">
+<% page_title "#{@festival.year} schedule#{@festival.is_current? ? ' and tickets' : ''}" %>
+<% if @festival.meta_description.present? %>
+	<% meta_tag :description, @festival.meta_description.truncate(160).html_safe %>
+<% else %>
+	<% meta_tag :description, "Herts Jazz Festival #{@festival.year} schedule#{@festival.is_current? ? ' and tickets' : ''}" %>
+<% end %>
 
+
+<div class="container" id="festivals">
   <div class="mobile_show col-12 text-center">
     <p class="mb-1"><small><b>Call the box office:</b> 01462 681088</small></p>
     <p class="mb-4">
