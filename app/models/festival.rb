@@ -20,12 +20,12 @@ class Festival < ApplicationRecord
 	def films
 		@films ||= begin
 			film_list = []
-			self.days.each do |day|
+			self.reverse_days.each do |day|
 				day.film_gigs.each do |gig|
 					film_list << gig
 				end
 			end
-		film_list
+			film_list
 		end
 	end
 
