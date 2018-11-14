@@ -50,8 +50,8 @@
 			<% end %>
 			</div>
 
-			<% if @festival.gallery_url.length > 0 && !@festival.is_current %>
-				<%= link_to "Click here to see Melody McLaren's photos of the #{@festival.year} festival", @festival.gallery_url, target: :blank %>
+			<% if @festival.gallery_url.length > 0 %>
+				<%= link_to "Click here to see photos of the #{@festival.year} festival", @festival.gallery_url, target: :blank %>
 			<% end %>
 		</div>
 
