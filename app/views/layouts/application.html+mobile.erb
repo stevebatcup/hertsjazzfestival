@@ -45,6 +45,11 @@
 			        	> Herts Jazz Festival <%= current_festival.year %>
 			      	</a>
 			    	</div>
+            <% if current_festival && current_festival.gallery_url.length > 0 %>
+	            <div class="bd-toc-item">
+	              <%= link_to "> #{current_festival.year} photos", current_festival.gallery_url, target: :blank, class: "bd-toc-link" %>
+	            </div>
+            <% end %>
 				    <div class="bd-toc-item">
 				      <a class="bd-toc-link" href="<%= films_path %>">
 				        > Film Festival

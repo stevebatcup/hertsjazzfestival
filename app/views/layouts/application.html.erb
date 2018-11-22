@@ -57,6 +57,9 @@
             <a class="p-2 " href="<%= root_path %>">Home</a>
           <% else %>
             <a class="p-2 " href="<%= root_path %>">Herts Jazz Festival <%= current_festival.year %></a>
+            <% if current_festival && current_festival.gallery_url.length > 0 %>
+              <%= link_to "#{current_festival.year} photos", current_festival.gallery_url, target: :blank, class: "p-2" %>
+            <% end %>
           <% end %>
           <a class="p-2 " href="<%= films_path %>">Film Festival</a>
           <a class="p-2 " href="<%= current_venue_path %>">Broadway Theatre</a>
