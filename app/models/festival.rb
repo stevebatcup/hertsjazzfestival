@@ -7,6 +7,18 @@ class Festival < ApplicationRecord
 		self.days.reverse
 	end
 
+	def gigs
+		@gigs ||= begin
+			gigs = []
+			self.days.each do |day|
+				day.gigs.each do |gig|
+					gigs << gig
+				end
+			end
+			gigs
+		end
+	end
+
 	def build_dates
 		self.year = self.starts.strftime("%Y")
 		day_count = ((self.ends - self.starts).to_i / 86400)

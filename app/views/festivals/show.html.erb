@@ -8,21 +8,25 @@
 
 <div class="container" id="festivals">
   <div class="mobile_show col-12 text-center">
-    <p class="mb-1"><small><b>Call the box office:</b> 01462 681088</small></p>
+    <p class="mb-1"><small><b>Call the box office:</b> 01279 710200</small></p>
     <p class="mb-4">
       <a class="btn btn-primary" href="mailto:info@hertsjazz.co.uk">Email us at info@hertsjazz.co.uk</a>
     </p>
   </div>
 
 	<% if @festival.is_current %>
-		<ul class="nav nav-pills nav-justified">
-		  <li class="nav-item">
-		    <a class="nav-link active" href="#lineup" data-toggle="tab" role="tab">Schedule</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="#tickets" data-toggle="tab" role="tab">Tickets</a>
-		  </li>
-		</ul>
+		<% if @festival.gigs.any? %>
+			<ul class="nav nav-pills nav-justified">
+			  <li class="nav-item">
+			    <a class="nav-link active" href="#lineup" data-toggle="tab" role="tab">Schedule</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href="#tickets" data-toggle="tab" role="tab">Tickets</a>
+			  </li>
+			</ul>
+		<% else %>
+			<p>The 9th Herts Jazz Festival will take place at the Rhodes Arts Complex in Bishop's Stortford on 27-29 September. Details coming soon!</p>
+		<% end %>
 	<% else %>
 		<h2 class="main_heading mb-5"><%= @festival.year %> Herts Jazz festival</h2>
 	<% end %>
@@ -51,7 +55,11 @@
 			</div>
 
 			<% if @festival.gallery_url.length > 0 %>
-				<%= link_to "Click here to see photos of the #{@festival.year} festival", @festival.gallery_url, target: :blank %>
+				<p><%= link_to "Click here to see photos of the #{@festival.year} festival", @festival.gallery_url, target: :blank %></p>
+			<% end %>
+
+			<% if !@festival.is_current && @festival.films.any? %>
+				<p><%= link_to "Click here to see details of the #{@festival.year} film festival", films_path(festival: @festival.id) %></p>
 			<% end %>
 		</div>
 

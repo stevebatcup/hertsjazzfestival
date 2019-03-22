@@ -1,5 +1,10 @@
 class FilmsController < ApplicationController
 	def index
-		@films = current_festival.films
+		if params[:festival]
+			@festival = Festival.find(params[:festival])
+		else
+			@festival = current_festival
+		end
+		@films = @festival.films
 	end
 end

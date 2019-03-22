@@ -2,28 +2,36 @@
 <% meta_tag :description, "In response to many requests for a repeat our popular collaboration with the Herts Jazz Festival, we are pleased to be screening two very special films at this year’s festival. Please note that there are a maximum of only 40 tickets per screening so make sure you book early." %>
 
 <div class="container" id="films">
-	<h2 class="main_heading">Film Festival <%= current_festival.year %></h2>
+	<h2 class="main_heading">Film Festival <%= @festival.year %></h2>
 
-	<p><em>Introduction from Mike O’Brien, Herts Jazz Film Festival curator:</em></p>
+	<% if @films.any? %>
 
-	<p>In response to many requests for a repeat our popular collaboration with the Herts Jazz Festival, we are pleased to be screening two very special films at this year’s festival. Please note that there are a maximum of  only 40 tickets per screening so make sure you book early.</p>
+	<!-- 	<p><em>Introduction from Mike O’Brien, Herts Jazz Film Festival curator:</em></p>
 
-	<p>We are very grateful for the support of the Broadway Cinema and Theatre in helping us put on these films.</p>
+		<p>In response to many requests for a repeat our popular collaboration with the Herts Jazz Festival, we are pleased to be screening two very special films at this year’s festival. Please note that there are a maximum of  only 40 tickets per screening so make sure you book early.</p>
 
-	<p>&nbsp;</p>
+		<p>We are very grateful for the support of the Broadway Cinema and Theatre in helping us put on these films.</p>
+	 -->
+		<p>&nbsp;</p>
 
-	<div class="row">
-	<% @films.each do |film| %>
-		<div class="col-12 col-lg-6 col-md-6 gig">
-			<h4><%= film.day.date.strftime("%A %B %e") %>: <%= "#{film.starts.strftime("%l:%M -")}#{film.ends.strftime("%l:%M%P")}" %></h4>
-			<%= link_to(image_tag(film.image.url(:small), width: '100%'), gig_path(film)) if film.image.present? %>
-			<h3><%= link_to film.act, gig_path(film) %></h3>
-			<%= simple_format film.description.truncate_words(150) %>
-			<div class='buttons'>
-				<a href="<%= gig_path(film) %>" class='btn btn-primary btn-block'>More details ></a>
-				<a href='<%= film.booking_url %>' class='btn btn-success btn-block' target="_blank">Book now</a>
+		<div class="row">
+		<% @films.each do |film| %>
+			<div class="col-12 col-lg-6 col-md-6 gig">
+				<h4><%= film.day.date.strftime("%A %B %e, %Y") %>: <%= "#{film.starts.strftime("%l:%M -")}#{film.ends.strftime("%l:%M%P")}" %></h4>
+				<%= link_to(image_tag(film.image.url(:small), width: '100%'), gig_path(film)) if film.image.present? %>
+				<h3><%= link_to film.act, gig_path(film) %></h3>
+				<%= simple_format film.description.truncate_words(150) %>
+				<div class='buttons'>
+					<a href="<%= gig_path(film) %>" class='btn btn-primary btn-block'>More details ></a>
+					<a href='<%= film.booking_url %>' class='btn btn-success btn-block' target="_blank">Book now</a>
+				</div>
 			</div>
+		<% end %>
 		</div>
+
+	<% else %>
+
+		<p>Information on films showing at the <%= @festival.year %> festival is coming soon.</p>
+
 	<% end %>
-	</div>
 </div>
