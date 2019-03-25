@@ -126,7 +126,7 @@
       <p class="mb-1">&copy; <%= Date.today.strftime("%Y") %> Herts Jazz</p>
       <h4 class="m-3">"One of Britain’s finest jazz events" - <em>Alyn Shipton, The Times</em></h4>
       <ul class="list-inline mb-4">
-        <li class="list-inline-item"><a href="<%= root_path %>">2018 Jazz Festival</a></li>
+        <li class="list-inline-item"><a href="<%= root_path %>"><%= current_festival.year %> Jazz Festival</a></li>
         <li class="list-inline-item"><a href="<%= films_path %>">Film Festival</a></li>
         <li class="list-inline-item"><a href="<%= current_venue_path %>">Rhodes Arts Complex</a></li>
         <li class="list-inline-item"><a href="<%= club_path %>">Herts Jazz Club</a></li>

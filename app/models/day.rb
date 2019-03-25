@@ -4,11 +4,12 @@ class Day < ApplicationRecord
 	default_scope	{ order(date: :desc) }
 
 	def gig_list
-		if self.festival.is_current?
-			music_gigs
-		else
-			gigs
-		end
+		music_gigs
+		# if self.festival.is_current?
+		# 	music_gigs
+		# else
+		# 	gigs
+		# end
 	end
 
 	def music_gigs
