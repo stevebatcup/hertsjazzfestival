@@ -18,7 +18,7 @@
 		<% @films.each do |film| %>
 			<div class="col-12 col-lg-6 col-md-6 gig">
 				<h4><%= film.day.date.strftime("%A %B %e, %Y") %>: <%= "#{film.starts.strftime("%l:%M -")}#{film.ends.strftime("%l:%M%P")}" %></h4>
-				<%= link_to(image_tag(film.image.url(:small), width: '100%'), gig_path(film)) if film.image.present? %>
+				<%= link_to(image_tag(film.image.url(:large), width: '100%'), gig_path(film)) if film.image.present? %>
 				<h3><%= link_to film.act, gig_path(film) %></h3>
 				<%= simple_format film.description.truncate_words(150) %>
 				<div class='buttons'>
