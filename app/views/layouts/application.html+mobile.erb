@@ -106,6 +106,26 @@
 					</a>
 				</div>
 			</div>
+
+			<div id="sponsors" class="container">
+				<ul class="d-flex mt-4">
+				  <li class="list-inline-item sponsor mr-4" id="fazioli">
+				    <a href="http://www.fazioli.com/en" target="_blank">
+				      <%= image_tag 'fazioli-white.png', alt: 'Fazioli' %>
+				    </a>
+				  </li>
+				  <li class="list-inline-item sponsor ml-4 mr-4" id="artscouncil">
+				    <a href="https://www.artscouncil.org.uk/" target="_blank">
+				      <%= image_tag 'artscouncil.png', alt: 'Arts Council England' %>
+				    </a>
+				  </li>
+				  <li class="list-inline-item sponsor ml-4" id="cambridge">
+				    <a href="https://www.cambridgedrums.co.uk/" target="_blank">
+				      <%= image_tag 'cambridge.png', alt: 'Cambridge Drums' %>
+				    </a>
+				  </li>
+				</ul>
+			</div>
 		</footer>
 
 		<% if Rails.env == 'production' %>

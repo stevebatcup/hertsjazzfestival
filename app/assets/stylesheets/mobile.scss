@@ -114,4 +114,39 @@ body.mobile {
 			padding: 0.6rem;
 		}
 	}
+
+	footer {
+		#sponsors {
+			ul {
+				padding: 0;
+
+				li.sponsor {
+					&#fazioli {
+						width: unset;
+					}
+
+					// &#bbcradio3 {
+					// 	width: 120px;
+					// }
+
+					&#artscouncil {
+						width: unset;
+					}
+
+					&#cambridge {
+						width: unset;
+					}
+
+					a {
+						display: block;
+						width: 100%;
+
+						img {
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
 }
