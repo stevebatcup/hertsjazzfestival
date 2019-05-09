@@ -23,7 +23,9 @@
 				<%= simple_format film.description.truncate_words(150) %>
 				<div class='buttons'>
 					<a href="<%= gig_path(film) %>" class='btn btn-primary btn-block'>More details ></a>
-					<a href='<%= film.booking_url %>' class='btn btn-success btn-block' target="_blank">Book now</a>
+					<% if film.is_bookable? %>
+						<a href='<%= film.booking_url %>' class='btn btn-success btn-block' target="_blank">Book now</a>
+					<% end %>
 				</div>
 			</div>
 		<% end %>
