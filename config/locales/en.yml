@@ -27,3 +27,4 @@ en:
       gig:
         starts: Start time
         ends: End time
+        video_url: YouTube Video ID

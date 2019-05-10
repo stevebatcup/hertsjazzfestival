@@ -19,6 +19,9 @@ class GigDashboard < Administrate::BaseDashboard
     is_film: Field::Boolean,
     website: Field::String,
     booking_url: Field::String,
+    video_url: StringWithHintField.with_options(
+      hint: "<a href='https://docs.joeworkman.net/rapidweaver/stacks/youtube/video-id' target='_blank'>Where do I find the video ID on YouTube?</a> ".html_safe
+    ),
     standard_price: Field::String.with_options(searchable: false),
     members_price: Field::String.with_options(searchable: false),
     students_price: Field::String.with_options(searchable: false),
@@ -52,6 +55,7 @@ class GigDashboard < Administrate::BaseDashboard
     :description,
     :image,
     :website,
+    :video_url,
     :booking_url,
     :standard_price,
     :members_price,

@@ -70,6 +70,21 @@ body.mobile {
 				width: 100%;
 			}
 		}
+
+		ul#festival_tabs {
+			margin-bottom: 15px;
+			li {
+				font-size: 1em;
+
+				a {
+					height: 64px;
+
+					&.single_line {
+				    line-height: 2.7em;
+					}
+				}
+			}
+		}
 	}
 
 	.container#gig {

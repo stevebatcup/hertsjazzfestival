@@ -12,6 +12,10 @@
 					<%= link_to website.strip, "http://#{website.strip}", target: :blank %><br />
 				<% end %>
 			</h5>
+
+			<% if @gig.video_url? %>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @gig.video_url %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+			<% end %>
 			<%= back_link(@gig) %>
 		</div>
 

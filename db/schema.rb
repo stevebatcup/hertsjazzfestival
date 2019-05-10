@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180816105902) do
+ActiveRecord::Schema.define(version: 20190510095638) do
 
   create_table "days", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.date    "date"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20180816105902) do
     t.string   "image"
     t.string   "website"
     t.string   "booking_url"
+    t.string   "video_url"
     t.integer  "sort"
     t.decimal  "standard_price",               precision: 8, scale: 2
     t.decimal  "members_price",                precision: 8, scale: 2
