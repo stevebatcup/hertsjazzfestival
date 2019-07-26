@@ -65,6 +65,9 @@
           <% end %>
           <a class="p-2 " href="<%= films_path %>">Film Festival</a>
           <a class="p-2 " href="<%= current_venue_path %>">Rhodes Arts Complex</a>
+          <% unless is_tablet? %>
+            <a class="p-2 " href="/hotels">Hotels</a>
+          <% end %>
           <a class="p-2 " href="<%= club_path %>">Herts Jazz Club</a>
           <% if is_tablet? %>
             <a class="p-2 " href="<%= festivals_path %>">Previous Festivals</a>

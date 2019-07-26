@@ -17,12 +17,12 @@
 				</div>
 			</div>
 
-					<p>Address:<br />
+			<p>Address:<br />
 
-						<b>1-3 South Rd<br />
-						Bishop's Stortford<br />
-						CM23 3JG</b><br />
-						Phone: <b>01279 710200</b></p>
+				<b>1-3 South Rd<br />
+				Bishop's Stortford<br />
+				CM23 3JG</b><br />
+				Phone: <b>01279 710200</b></p>
 
 			<p>There is some free parking at the venue with additional public car parks at Jackson Square and The Causeway. Bishops Stortford station is just a six-minute walk.</p>
 
@@ -61,6 +61,11 @@
 				Straight over 2 sets of lights, over roundabout. After 300 yards, Rhodes is on the right.</p>
 
 			<p class="mt-4">For more information please see <a target="_blank" href="http://rhodesartscomplex.co.uk/">rhodesartscomplex.co.uk</a></p>
+
+			<% if is_tablet? %>
+				<h3 class="mt-5 mb-3">Hotels</h3>
+				<%= render 'hotels/list' %>
+			<% end %>
 
 	</div>
 

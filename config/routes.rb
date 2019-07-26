@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'current-venue', to: 'venues#show', as: :current_venue
   get 'films', to: 'films#index', as: :films
   get 'herts-jazz-club', to: 'club#show', as: :club
+  get 'hotels', to: 'hotels#index', as: :hotels
 
   resources :gigs
   resources :films
