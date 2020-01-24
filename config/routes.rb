@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :musicians
     resources :instruments
     resources :venues
+    resources :site_settings
 
     root to: "gigs#index"
   end

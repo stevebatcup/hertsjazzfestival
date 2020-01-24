@@ -55,15 +55,17 @@
 
       <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
-          <% if is_tablet? %>
-            <a class="p-2 " href="<%= root_path %>">Home</a>
-          <% else %>
-            <a class="p-2 " href="<%= root_path %>">Herts Jazz Festival <%= current_festival.year %></a>
-            <% if current_festival && current_festival.gallery_url.length > 0 %>
-              <%= link_to "#{current_festival.year} photos", current_festival.gallery_url, target: :blank, class: "p-2" %>
+          <% unless current_festival.nil? %>
+            <% if is_tablet? %>
+              <a class="p-2 " href="<%= root_path %>">Home</a>
+            <% else %>
+              <a class="p-2 " href="<%= root_path %>">Herts Jazz Festival <%= current_festival.year %></a>
+              <% if current_festival && current_festival.gallery_url.length > 0 %>
+                <%= link_to "#{current_festival.year} photos", current_festival.gallery_url, target: :blank, class: "p-2" %>
+              <% end %>
             <% end %>
+            <a class="p-2 " href="<%= films_path %>">Film Festival</a>
           <% end %>
-          <a class="p-2 " href="<%= films_path %>">Film Festival</a>
           <a class="p-2 " href="<%= current_venue_path %>">Rhodes Arts Complex</a>
           <% unless is_tablet? %>
             <a class="p-2 " href="/hotels">Hotels</a>
@@ -129,17 +131,14 @@
       <p class="mb-1">&copy; <%= Date.today.strftime("%Y") %> Herts Jazz</p>
       <h4 class="m-3">"One of Britain’s finest jazz events" - <em>Alyn Shipton, The Times</em></h4>
       <ul class="list-inline mb-4">
-        <li class="list-inline-item"><a href="<%= root_path %>"><%= current_festival.year %> Jazz Festival</a></li>
-        <li class="list-inline-item"><a href="<%= films_path %>">Film Festival</a></li>
+        <% unless current_festival.nil? %>
+          <li class="list-inline-item"><a href="<%= root_path %>"><%= current_festival.year %> Jazz Festival</a></li>
+          <li class="list-inline-item"><a href="<%= films_path %>">Film Festival</a></li>
+        <% end %>
         <li class="list-inline-item"><a href="<%= current_venue_path %>">Rhodes Arts Complex</a></li>
         <li class="list-inline-item"><a href="<%= club_path %>">Herts Jazz Club</a></li>
       </ul>
       <ul class="list-inline mt-4">
-        <li class="list-inline-item sponsor mr-4" id="fazioli">
-          <a href="http://www.fazioli.com/en" target="_blank">
-            <%= image_tag 'fazioli-white.png', alt: 'Fazioli' %>
-          </a>
-        </li>
         <li class="list-inline-item sponsor ml-4 mr-4" id="artscouncil">
           <a href="https://www.artscouncil.org.uk/" target="_blank">
             <%= image_tag 'artscouncil.png', alt: 'Arts Council England' %>

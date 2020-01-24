@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 	before_action :set_device_type
 
   def festival_list
-    @festival_list ||= Festival.where(is_current: false).all
+    @festival_list ||= Festival.where(is_current: false).order(year: :desc).all
   end
   helper_method :festival_list
 
@@ -26,6 +26,25 @@ class ApplicationController < ActionController::Base
     browser.device.tablet?
   end
   helper_method :is_tablet?
+
+
+  def site_settings
+    @site_settings ||= Rails.cache.fetch("site_settings") do
+      settings = {}
+      SiteSetting.all.each do |setting|
+        if setting.value.present? && setting.value.length > 0
+          settings[setting.name] = setting.value
+        end
+      end
+      settings
+    end
+  end
+  # helper_method :site_settings
+
+  def site_setting(name)
+    site_settings[name]
+  end
+  helper_method :site_setting
 
 private
   def set_device_type

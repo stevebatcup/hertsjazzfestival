@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190510095638) do
+ActiveRecord::Schema.define(version: 20200124093255) do
 
   create_table "days", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.date    "date"
@@ -87,6 +87,11 @@ ActiveRecord::Schema.define(version: 20190510095638) do
     t.integer "gig_id"
     t.integer "musician_id"
     t.integer "instrument_id"
+  end
+
+  create_table "site_settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "value"
   end
 
   create_table "venues", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

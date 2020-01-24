@@ -42,6 +42,8 @@ gem 'bootstrap', '~> 4.1.0'
 
 gem "administrate"
 gem "wysiwyg-rails"
+gem 'tinymce-rails'
+
 
 gem "carrierwave"
 gem "mini_magick"
