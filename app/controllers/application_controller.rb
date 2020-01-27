@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
 
 
   def site_settings
-    @site_settings ||= Rails.cache.fetch("site_settings") do
+    @site_settings ||= Rails.cache.fetch("site_settings", expires_in: 30.minutes) do
       settings = {}
       SiteSetting.all.each do |setting|
         if setting.value.present? && setting.value.length > 0
