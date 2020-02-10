@@ -1,24 +1,5 @@
-# README
+# Herts Jazz Festival 2020
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The 10th Herts Jazz Festival will be at the Rhodes Arts Complex in Bishop's Stortford 9-11 October 2020.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+More details coming very soon.
