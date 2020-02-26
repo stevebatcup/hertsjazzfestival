@@ -8,7 +8,7 @@ class DayDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    date_as_day_name: Field::String,
+    date_as_day_name: Field::String.with_options(searchable: false),
     festival: Field::BelongsTo,
     gigs: Field::HasMany,
     id: Field::Number,
@@ -19,6 +19,9 @@ class DayDashboard < Administrate::BaseDashboard
     earlybird_standard_price: Field::String.with_options(searchable: false),
     earlybird_members_price: Field::String.with_options(searchable: false),
     earlybird_students_price: Field::String.with_options(searchable: false),
+    super_earlybird_standard_price: Field::String.with_options(searchable: false),
+    super_earlybird_members_price: Field::String.with_options(searchable: false),
+    super_earlybird_students_price: Field::String.with_options(searchable: false),
     booking_url: Field::String,
     sort: Field::Number,
   }.freeze
@@ -35,7 +38,18 @@ class DayDashboard < Administrate::BaseDashboard
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = [].freeze
+  SHOW_PAGE_ATTRIBUTES = [
+    :day_standard_price,
+    :day_members_price,
+    :day_students_price,
+    :earlybird_standard_price,
+    :earlybird_members_price,
+    :earlybird_students_price,
+    :super_earlybird_standard_price,
+    :super_earlybird_members_price,
+    :super_earlybird_students_price,
+    :booking_url
+  ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
@@ -47,6 +61,9 @@ class DayDashboard < Administrate::BaseDashboard
     :earlybird_standard_price,
     :earlybird_members_price,
     :earlybird_students_price,
+    :super_earlybird_standard_price,
+    :super_earlybird_members_price,
+    :super_earlybird_students_price,
     :booking_url
   ].freeze
 

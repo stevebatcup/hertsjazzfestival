@@ -10,17 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200124093255) do
+ActiveRecord::Schema.define(version: 20200226144613) do
 
   create_table "days", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.date    "date"
     t.integer "festival_id"
-    t.decimal "day_standard_price",       precision: 8, scale: 2
-    t.decimal "day_members_price",        precision: 8, scale: 2
-    t.decimal "day_students_price",       precision: 8, scale: 2
-    t.decimal "earlybird_standard_price", precision: 8, scale: 2
-    t.decimal "earlybird_members_price",  precision: 8, scale: 2
-    t.decimal "earlybird_students_price", precision: 8, scale: 2
+    t.decimal "day_standard_price",             precision: 8, scale: 2
+    t.decimal "day_members_price",              precision: 8, scale: 2
+    t.decimal "day_students_price",             precision: 8, scale: 2
+    t.decimal "earlybird_standard_price",       precision: 8, scale: 2
+    t.decimal "earlybird_members_price",        precision: 8, scale: 2
+    t.decimal "earlybird_students_price",       precision: 8, scale: 2
+    t.decimal "super_earlybird_standard_price", precision: 8, scale: 2
+    t.decimal "super_earlybird_members_price",  precision: 8, scale: 2
+    t.decimal "super_earlybird_students_price", precision: 8, scale: 2
     t.integer "sort"
     t.string  "booking_url"
   end
@@ -29,20 +32,24 @@ ActiveRecord::Schema.define(version: 20200124093255) do
     t.string   "year"
     t.integer  "venue_id"
     t.string   "gallery_url"
-    t.boolean  "is_current",                                                     default: false
-    t.decimal  "weekend_standard_price",                 precision: 8, scale: 2
-    t.decimal  "weekend_members_price",                  precision: 8, scale: 2
-    t.decimal  "weekend_students_price",                 precision: 8, scale: 2
-    t.decimal  "earlybird_standard_price",               precision: 8, scale: 2
-    t.decimal  "earlybird_members_price",                precision: 8, scale: 2
-    t.decimal  "earlybird_students_price",               precision: 8, scale: 2
+    t.boolean  "is_current",                                                           default: false
+    t.decimal  "weekend_standard_price",                       precision: 8, scale: 2
+    t.decimal  "weekend_members_price",                        precision: 8, scale: 2
+    t.decimal  "weekend_students_price",                       precision: 8, scale: 2
+    t.decimal  "earlybird_standard_price",                     precision: 8, scale: 2
+    t.decimal  "earlybird_members_price",                      precision: 8, scale: 2
+    t.decimal  "earlybird_students_price",                     precision: 8, scale: 2
+    t.decimal  "super_earlybird_standard_price",               precision: 8, scale: 2
+    t.decimal  "super_earlybird_members_price",                precision: 8, scale: 2
+    t.decimal  "super_earlybird_students_price",               precision: 8, scale: 2
     t.string   "booking_url"
-    t.datetime "created_at",                                                                     null: false
-    t.datetime "updated_at",                                                                     null: false
+    t.datetime "created_at",                                                                           null: false
+    t.datetime "updated_at",                                                                           null: false
     t.datetime "starts"
     t.datetime "ends"
-    t.date     "early_bird_cutoff_date"
-    t.text     "meta_description",         limit: 65535
+    t.date     "earlybird_cutoff_date"
+    t.date     "super_earlybird_cutoff_date"
+    t.text     "meta_description",               limit: 65535
   end
 
   create_table "gigs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -91,7 +98,7 @@ ActiveRecord::Schema.define(version: 20200124093255) do
 
   create_table "site_settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
-    t.string "value"
+    t.text   "value", limit: 65535
   end
 
   create_table "venues", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -21,11 +21,15 @@ class FestivalDashboard < Administrate::BaseDashboard
     earlybird_standard_price: Field::String.with_options(searchable: false),
     earlybird_members_price: Field::String.with_options(searchable: false),
     earlybird_students_price: Field::String.with_options(searchable: false),
+    super_earlybird_standard_price: Field::String.with_options(searchable: false),
+    super_earlybird_members_price: Field::String.with_options(searchable: false),
+    super_earlybird_students_price: Field::String.with_options(searchable: false),
     booking_url: Field::String,
     meta_description: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    early_bird_cutoff_date: Field::DateTime
+    earlybird_cutoff_date: Field::DateTime,
+    super_earlybird_cutoff_date: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -52,6 +56,9 @@ class FestivalDashboard < Administrate::BaseDashboard
     :earlybird_standard_price,
     :earlybird_members_price,
     :earlybird_students_price,
+    :super_earlybird_standard_price,
+    :super_earlybird_members_price,
+    :super_earlybird_students_price,
     :booking_url,
     :created_at,
     :updated_at,
@@ -69,10 +76,14 @@ class FestivalDashboard < Administrate::BaseDashboard
     :weekend_standard_price,
     :weekend_members_price,
     :weekend_students_price,
-    :early_bird_cutoff_date,
+    :earlybird_cutoff_date,
     :earlybird_standard_price,
     :earlybird_members_price,
     :earlybird_students_price,
+    :super_earlybird_cutoff_date,
+    :super_earlybird_standard_price,
+    :super_earlybird_members_price,
+    :super_earlybird_students_price,
     :booking_url,
     :meta_description
   ].freeze

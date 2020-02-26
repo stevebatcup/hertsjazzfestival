@@ -20,11 +20,8 @@
 
 	<% if @festival %>
 		<% if @festival.is_current %>
+			<%= site_setting("Homepage intro").html_safe %>
 			<% if @festival.gigs.any? %>
-				<p>Welcome to the 9th Herts Jazz Festival in Bishop's Stortford. For those of you who have been to previous festivals, the format is pretty similar. This year we are dedicating the Friday evening to the Herts Jazz Film Festival, followed by Gareth Williams Trio playing in the bar.</p>
-				<p>Please note that there is separate ticketing for Friday because we have limited capacity for that evening. This is going to be a real jazz-lover's festival so please book soon and help us make it a real success!</p>
-				<p class="mb-4">See you there!<br />
-					Clark</p>
 				<ul class="nav nav-pills nav-justified" id="festival_tabs">
 				  <li class="nav-item">
 				    <a class="nav-link active single_line" href="#lineup" data-toggle="tab" role="tab">Schedule</a>
@@ -33,8 +30,6 @@
 				    <a class="nav-link" href="#tickets" data-toggle="tab" role="tab"> Weekend &amp; Day Tickets</a>
 				  </li>
 				</ul>
-			<% else %>
-				<p>The 9th Herts Jazz Festival will take place at the Rhodes Arts Complex in Bishop's Stortford on 27-29 September. Details coming soon!</p>
 			<% end %>
 		<% else %>
 			<h2 class="main_heading mb-5"><%= @festival.year %> Herts Jazz festival</h2>
@@ -75,82 +70,7 @@
 
 		<% if @festival.is_current %>
 			<div class="tab-pane fade show" id="tickets" role="tabpanel" aria-labelledby="tickets-tab">
-				<table class="table">
-					<thead>
-						<tr>
-							<th scope="col">Type</th>
-							<th scope="col">Standard</th>
-							<th scope="col">Members</th>
-							<th scope="col">Students</th>
-							<th scope="col">&nbsp;</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">Weekend<sup>*</sup></th>
-							<td><%= gig_price(@festival.weekend_standard_price) %></td>
-							<td><%= gig_price(@festival.weekend_members_price) %></td>
-							<td><%= gig_price(@festival.weekend_students_price) %></td>
-							<td>
-								<% if @festival.is_in_early_bird_period? %>
-									&nbsp;
-								<% else %>
-									<%= link_to "Book now", @festival.booking_url, target: :blank %>
-								<% end %>
-							</td>
-						</tr>
-						<% if @festival.is_in_early_bird_period? %>
-							<tr>
-								<th scope="row">Early-bird<sup>**</sup></th>
-								<td><%= gig_price(@festival.earlybird_standard_price) %></td>
-								<td><%= gig_price(@festival.earlybird_members_price) %></td>
-								<td><%= gig_price(@festival.earlybird_students_price) %></td>
-								<td><%= link_to "Book now", @festival.booking_url, target: :blank %></td>
-							</tr>
-						<% end %>
-						<% @festival.days.each do |day| %>
-							<% unless day.booking_url.nil? %>
-								<% day_name = day.date.strftime("%A").capitalize %>
-								<tr>
-									<th scope="row"><%= day_name %><sup>*</sup></th>
-									<td><%= gig_price(day.day_standard_price) %></td>
-									<td><%= gig_price(day.day_members_price) %></td>
-									<td><%= gig_price(day.day_students_price) %></td>
-									<td>
-										<% if @festival.is_in_early_bird_period? %>
-											&nbsp;
-										<% else %>
-											<%= link_to "Book now", day.booking_url, target: :blank %>
-										<% end %>
-									</td>
-								</tr>
-								<% if @festival.is_in_early_bird_period? %>
-									<tr>
-										<th scope="row"><%= day_name %> early-bird<sup>**</sup></th>
-										<td><%= gig_price(day.earlybird_standard_price) %></td>
-										<td><%= gig_price(day.earlybird_members_price) %></td>
-										<td><%= gig_price(day.earlybird_students_price) %></td>
-										<td><%= link_to "Book now", day.booking_url, target: :blank %></td>
-									</tr>
-								<% end %>
-							<% end %>
-						<% end %>
-						<tr>
-							<th scope="row">Individual gigs</th>
-							<td colspan="4">
-								<% if @festival.is_in_early_bird_period? %>
-									Gig tickets go on sale <%= @festival.early_bird_cutoff_date.strftime("%B %e") %>.
-								<% end %>
-								<a href="/">View the schedule to see individual prices</a></td>
-						</tr>
-						<caption>
-							* Weekend and Day tickets do not include admission to the Herts Jazz Film Festival
-							<% if @festival.is_in_early_bird_period? %>
-								<br />** Early-bird tickets available until midnight <%= @festival.early_bird_cutoff_eve.strftime("%B %e") %>
-							<% end %>
-						</caption>
-					</tbody>
-				</table>
+				<%= render partial: 'tariff', locals: { festival: @festival } %>
 			</div>
 		<% end %>
 
