@@ -10,33 +10,33 @@
 	</thead>
 	<tbody>
 		<tr>
-			<th scope="row">Weekend<sup>*</sup></th>
+			<th scope="row">Weekend<sup></sup></th>
 			<td><%= gig_price(festival.weekend_standard_price) %></td>
 			<td><%= gig_price(festival.weekend_members_price) %></td>
 			<td><%= gig_price(festival.weekend_students_price) %></td>
 			<td>
 				<% if festival.is_in_earlybird_period? || festival.is_in_super_earlybird_period? %>
 					&nbsp;
-				<% else %>
+				<% elsif festival.booking_url.present? %>
 					<%= link_to "Book now", festival.booking_url, target: :blank %>
 				<% end %>
 			</td>
 		</tr>
 		<% if festival.is_in_earlybird_period? %>
 			<tr>
-				<th scope="row">Early-bird<sup>**</sup></th>
+				<th scope="row">Early-bird<sup>*</sup></th>
 				<td><%= gig_price(festival.earlybird_standard_price) %></td>
 				<td><%= gig_price(festival.earlybird_members_price) %></td>
 				<td><%= gig_price(festival.earlybird_students_price) %></td>
-				<td><%= link_to "Book now", festival.booking_url, target: :blank %></td>
+				<td><%= link_to_if festival.booking_url.present?, "Book now", festival.booking_url, target: :blank %></td>
 			</tr>
 		<% elsif festival.is_in_super_earlybird_period? %>
 			<tr>
-				<th scope="row">Super Early-bird<sup>**</sup></th>
+				<th scope="row">Super Early-bird<sup>*</sup></th>
 				<td><%= gig_price(festival.super_earlybird_standard_price) %></td>
 				<td><%= gig_price(festival.super_earlybird_members_price) %></td>
 				<td><%= gig_price(festival.super_earlybird_students_price) %></td>
-				<td><%= link_to "Book now", festival.booking_url, target: :blank %></td>
+				<td><%= link_to_if festival.booking_url.present?, "Book now", festival.booking_url, target: :blank %></td>
 			</tr>
 		<% end %>
 		<% festival.days.each do |day| %>
@@ -50,26 +50,26 @@
 					<td>
 						<% if festival.is_in_earlybird_period? ||  festival.is_in_super_earlybird_period? %>
 							&nbsp;
-						<% else %>
+						<% elsif festival.booking_url.present? %>
 							<%= link_to "Book now", day.booking_url, target: :blank %>
 						<% end %>
 					</td>
 				</tr>
 				<% if festival.is_in_earlybird_period? %>
 					<tr>
-						<th scope="row"><%= day_name %> early-bird<sup>**</sup></th>
+						<th scope="row"><%= day_name %> early-bird<sup>*</sup></th>
 						<td><%= gig_price(day.earlybird_standard_price) %></td>
 						<td><%= gig_price(day.earlybird_members_price) %></td>
 						<td><%= gig_price(day.earlybird_students_price) %></td>
-						<td><%= link_to "Book now", day.booking_url, target: :blank %></td>
+						<td><%= link_to_if festival.booking_url.present?, "Book now", day.booking_url, target: :blank %></td>
 					</tr>
 				<% elsif festival.is_in_super_earlybird_period? %>
 					<tr>
-						<th scope="row"><%= day_name %> super early-bird<sup>**</sup></th>
+						<th scope="row"><%= day_name %> super early-bird<sup>*</sup></th>
 						<td><%= gig_price(day.super_earlybird_standard_price) %></td>
 						<td><%= gig_price(day.super_earlybird_members_price) %></td>
 						<td><%= gig_price(day.super_earlybird_students_price) %></td>
-						<td><%= link_to "Book now", day.booking_url, target: :blank %></td>
+						<td><%= link_to_if festival.booking_url.present?, "Book now", day.booking_url, target: :blank %></td>
 					</tr>
 				<% end %>
 			<% end %>
@@ -83,11 +83,11 @@
 				<a href="/">View the schedule to see individual prices</a></td>
 		</tr>
 		<caption>
-			* Weekend and Day tickets do not include admission to the Herts Jazz Film Festival
+			<!-- * Weekend and Day tickets do not include admission to the Herts Jazz Film Festival -->
 			<% if festival.is_in_earlybird_period? %>
-				<br />** Early-bird tickets available until midnight <%= festival.earlybird_cutoff_eve.strftime("%B %e") %>
+				<br />* Early-bird tickets available until midnight <%= festival.earlybird_cutoff_eve.strftime("%B %e") %>
 			<% elsif festival.is_in_super_earlybird_period? %>
-				<br />** Super Early-bird tickets available until midnight <%= festival.super_earlybird_cutoff_eve.strftime("%B %e") %>
+				<br />* Super Early-bird tickets available until midnight <%= festival.super_earlybird_cutoff_eve.strftime("%B %e") %>
 			<% end %>
 		</caption>
 	</tbody>
