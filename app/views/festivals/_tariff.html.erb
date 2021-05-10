@@ -24,7 +24,7 @@
 		</tr>
 		<% if festival.is_in_earlybird_period? %>
 			<tr>
-				<th scope="row">Early-bird<sup>*</sup></th>
+				<th scope="row">Weekend early-bird<sup>*</sup></th>
 				<td><%= gig_price(festival.earlybird_standard_price) %></td>
 				<td><%= gig_price(festival.earlybird_members_price) %></td>
 				<td><%= gig_price(festival.earlybird_students_price) %></td>
@@ -36,7 +36,7 @@
 			</tr>
 		<% elsif festival.is_in_super_earlybird_period? %>
 			<tr>
-				<th scope="row">Super Early-bird<sup>*</sup></th>
+				<th scope="row">Weekend super early-bird<sup>*</sup></th>
 				<td><%= gig_price(festival.super_earlybird_standard_price) %></td>
 				<td><%= gig_price(festival.super_earlybird_members_price) %></td>
 				<td><%= gig_price(festival.super_earlybird_students_price) %></td>
@@ -51,7 +51,7 @@
 			<% unless day.booking_url.nil? %>
 				<% day_name = day.date.strftime("%A").capitalize %>
 				<tr>
-					<th scope="row"><%= day_name %><sup>*</sup></th>
+					<th scope="row"><%= day_name %></th>
 					<td><%= gig_price(day.day_standard_price) %></td>
 					<td><%= gig_price(day.day_members_price) %></td>
 					<td><%= gig_price(day.day_students_price) %></td>
